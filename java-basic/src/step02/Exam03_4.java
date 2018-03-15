@@ -5,8 +5,8 @@ public class Exam03_4 {
     public static void main(String[] args){
         // 변수를 선언한 후 값 저장
         // - 즉, 모든 메모리를 준비한 후 값 저장하기
-        int a1, a2;
-        a1 = 100;
+        int a1, a2; //선언
+        a1 = 100; //값 저장
         a2 = 200;
 
         System.out.println(a1);

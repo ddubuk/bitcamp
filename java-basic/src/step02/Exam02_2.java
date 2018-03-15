@@ -19,7 +19,7 @@ public class Exam02_2 {
         // 재직여부? y
 
         System.out.println("이름?");
-        sustem.out.println(keyScan.nextLine());
+        System.out.println(keyScan.nextLine());
         
         System.out.println("전화?");
         System.out.println(keyScan.nextLine());

@@ -13,7 +13,8 @@ public class Exam06_3 {
 
         for (int i = 0; i < 100; i++) {
             // 10자 출력하고 줄바꿈한다.
-            if ((i % 10) == 0) { System.out.println();
+            if ((i % 10) == 0) { 
+                System.out.println();
                 
                 System.out.print((char)('가' + i));
                 }
