@@ -4,9 +4,6 @@ package bitcamp.java106.pms;
 import bitcamp.java106.pms.domain.Team;
 import java.util.Scanner;
 
-// ver 0.8 - team/view 명령을 구현한다.
-    // 1단계: 입력 값에서 명령어와 검색어를 구분한다.
-// ver 0.7 - team/list 명령을 구현한다.
 // ver 0.6 - team/add 명령을 구현한다.
 // ver 0.5 - help 명령을 구현한다.
 // ver 0.4 - quit 명령어 입력 시 반복문을 종료한다.
@@ -22,10 +19,7 @@ public class App {
 
         while (true) {
             System.out.print("명령> ");
-            String[] arr = keyScan.nextLine().toLowerCase().split(" ");
-            String input = arr[0];
-            // 입력 받은 문자열을 공백으로 잘라서 명령과 검색어로 구부한다.
-            // 일단 다음으로 진행하기 전에 기존의 기능이 잘 되는지 확인하라!
+            String input = keyScan.nextLine().toLowerCase();
 
             if (input.equals("quit")) {
                 System.out.println("안녕히 가세요!");
@@ -42,8 +36,8 @@ public class App {
                 System.out.println();
                 continue;
             } else if (input.equals("team/add")) {
-                System.out.println("[팀 정보 입력]");
                 Team team = new Team();
+                System.out.println("[팀 정보 입력]");
 
                 System.out.print("팀명? ");
                 team.name = keyScan.nextLine();
@@ -64,19 +58,10 @@ public class App {
                 // 팀 정보가 담겨있는 객체의 주소를 배열에 보관한다.
                 teams[teamIndex++] = team;
 
+                //System.out.printf("%s, %s, %d, %s, %s\n", 
+                //    team.name, team.description, team.maxQty, team.startDate, team.endDate);
                 System.out.println();
                 continue;
-            } else if (input.equals("team/list")) {
-                System.out.println("[팀 목록]");
-                for (int i = 0; i < teamIndex; i++) {
-                    System.out.printf("%s, %d, %s ~ %s\n", 
-                        teams[i].name, teams[i].maxQty, 
-                        teams[i].startDate, teams[i].endDate);
-                }
-                System.out.println();
-                continue;
-            } else if (input.equals("team/view")) {
-
             }
 
             System.out.println(input);
