@@ -1,0 +1,41 @@
+// 메서드 분류 - 인스턴스 변수 
+package step07;
+
+public class ExamY_3 {
+    public static void main(String[] args) {
+        // 계산 결과를 개별적으로 관리하고 싶은가?
+        // 그렇다면 개별적으로 관리할 변수를 인스턴스의 변수로 선언하라!
+        
+        // 다음 두 개의 식을 분리하여 계산해보자.
+        // 식1) 2 + 3 - 1 * 7 / 3 = ?
+        // 식2) 3 * 2 + 7 / 4 - 5 = ?
+        // => 연산자 우선 순위를 고려하지 않고 순서대로 계산하라!
+        
+        // 식1과 식2를 개별적으로 동시에 계산할 수 없다.
+        Calculator2.plus(2);
+        Calculator2.plus(3);
+        
+        Calculator2.plus(3);
+        Calculator2.multiple(2);
+        
+        Calculator2.minus(1);
+        Calculator2.plus(7);
+        
+        Calculator2.multiple(7);
+        Calculator2.divide(4);
+        
+        Calculator2.divide(3);
+        Calculator2.minus(5);
+        
+        // Calculator2의result 변수는 한 개이기 때문에
+        // 결과를 출력하면 식1과 식2가 모두 계산된 결과가 출력된다.
+        System.out.printf("result = %d\n",Calculator2.result);
+
+    }
+}
+
+// 클래스 문법의 용도?
+// 1) 사용자 정의 데이터 타압 만들 때
+//  - 즉, 새로운 구조의 메모리를 설계할 때 사용한다.
+// 2) 메서드를 묶을 때
+//  - 서로 관련된 기능을 관리하기 쉽게 묶고 싶을 때 사용한다.
