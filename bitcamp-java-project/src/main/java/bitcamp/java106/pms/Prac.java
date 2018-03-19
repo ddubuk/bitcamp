@@ -192,37 +192,5 @@ public class Prac {
         
         while (true) {
             
-            String[] arr = prompt();
-            String menu = arr[0];
-            String option = null;
-            if (arr.length == 2) {
-                option = arr[1];
-            }
-        if (menu.equals("quit")) {
-            onQuit();
-        } else if (menu.equals("help")) {
-            onHelp();
-        } else if (menu.equals("team/add")) {
-            onTeamAdd();
-        } else if (menu.equals("team/list")) {
-            onTeamList();
-        } else if (menu.equals("team/view")) {
-            onTeamView();
-        } else if (menu.equals("team/update")) {
-            onTeamUpdate();
-        } else if (menu.equals("team/delete")) {
-            onTeamDelete();
-        } else if (menu.equals("member/add")) {
-            onMemberAdd();
-        } else if (menu.equals("member/list")) {
-            onMemberList();
-        } else if (menu.equals("member/view")) {
-            onMemberView();
-        } else if (menu.equals("member/update")) {
-            onMemberUpdate();
-        } else if (menu.equals("member/delete")) {
-            onMemberDelete();
-            System.out.println();
-        }
     }
 }
