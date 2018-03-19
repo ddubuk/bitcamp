@@ -1,4 +1,4 @@
-// 사용자 정의 데이터 타입 - 인스턴스 메서드   
+// 사용자 정의 데이터 타입 - 인스턴스 메서드  
 package step07;
 
 public class Score3 {
