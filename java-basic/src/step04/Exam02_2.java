@@ -27,7 +27,3 @@ public class Exam02_2 {
         System.out.println(Math.abs((d1 + d2) - (x + y)) < EPSILON);
     }
 }
-
-
-//부동소수점 비교할 때는 정수값과 다르게 조심해야한다.
-//같다고 해! 이렇게 명령을 해야한다.

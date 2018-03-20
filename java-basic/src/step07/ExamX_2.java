@@ -15,16 +15,11 @@ public class ExamX_2 {
         score.sum = score.kor + score.eng + score.math;
         score.average = score.sum / 3f;
         */
-       Score2.claculate(score);
-       
-       System.out.printf("%s, %d, %d, %d, %d, %.1f\n",
-               score.name, score.kor, score.eng, score.math, score.sum, score.average);
-
+        Score2.calculate(score);
+        
+        System.out.printf("%s, %d, %d, %d, %d, %.1f\n", 
+                score.name, score.kor, score.eng, score.math, 
+                score.sum, score.average);
     }
 }
 
-// 클래스 문법의 용도?
-// 1) 사용자 정의 데이터 타압 만들 때
-//  - 즉, 새로운 구조의 메모리를 설계할 때 사용한다.
-// 2) 메서드를 묶을 때
-//  - 서로 관련된 기능을 관리하기 쉽게 묶고 싶을 때 사용한다.

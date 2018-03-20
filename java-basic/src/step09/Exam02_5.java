@@ -4,7 +4,6 @@ package step09;
 import java.util.Date;
 
 public class Exam02_5 {
-
     public static void main(String[] args) throws Exception {
         Date d1 = new Date();
         
@@ -18,8 +17,8 @@ public class Exam02_5 {
         System.out.println(millis);
         
         // 실무에서는 java.util.Date 대신 이 클래스의 자식 클래스인
-        // java.sql.Date을 더 많이 쓴다.
-        // 이 클래스는 날짜 데이터를 문자열로 다룰 때 yyyy-mm-dd 형식으로 다룬다.
+        // java.sql.Date을 쓰기도 한다.
+        // 이 클래스는 날짜 데이터를 문자열로 다룰 때 yyyy-MM-dd 형식으로 다룬다.
         
         // 스태틱 메서드 활용
         long currMillis = System.currentTimeMillis();
@@ -27,7 +26,7 @@ public class Exam02_5 {
         // 생성자 활용
         java.sql.Date today = new java.sql.Date(currMillis);
         
-        // 인스턴스 메서드 활용
+        // 인스턴스 메서드 활용 
         String str = today.toString();
         System.out.println(str);
         
@@ -36,3 +35,8 @@ public class Exam02_5 {
         
     }
 }
+
+
+
+
+

@@ -1,4 +1,4 @@
-// 변수 초기화 -  초기화 문장
+// 변수 초기화 - 초기화 문장
 package step08;
 
 public class Exam05_2 {
@@ -17,6 +17,9 @@ public class Exam05_2 {
         System.out.println(obj1.b);
         
         System.out.println(c);
-        
-    }
+    } 
 }
+
+
+
+
