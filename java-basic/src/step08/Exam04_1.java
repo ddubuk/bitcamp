@@ -5,7 +5,7 @@ public class Exam04_1 {
     
     // Exam04_1 클래스 조차도 기본 생성자가 자동으로 추가된다.
     // 즉 다음의 생성자를 컴파일러가 자동으로 붙일 것이다.
-    //Exam04_1() {}
+    // Exam04_1() {}
     
     static class Score {
         String name;
@@ -43,7 +43,7 @@ public class Exam04_1 {
         
         // 생성자를 호출하지 않을 수 있는가?
         // => 컴파일 오류!
-        //Score s2 = new Score;
+        // Score s2 = new Score;
         
         Score s3 = new Score();
     }

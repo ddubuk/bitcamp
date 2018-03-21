@@ -2,6 +2,7 @@
 package step08;
 
 public class Exam01_2 {
+    
     public static void main(String[] args) {
         // 1) 성적 데이터를 설계할 클래스이기 때문에 그에 맞는 클래스명을 사용하라!
         class Score {
