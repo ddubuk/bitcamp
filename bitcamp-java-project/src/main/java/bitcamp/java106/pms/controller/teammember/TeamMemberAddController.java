@@ -1,7 +1,6 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.controller.teammember;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
@@ -13,7 +12,7 @@ import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
 @Component("team/member/add")
-public abstract class TeamMemberAddController implements Controller {
+public class TeamMemberAddController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
@@ -56,6 +55,12 @@ public abstract class TeamMemberAddController implements Controller {
         }
         
         teamMemberDao.addMember(teamName, memberId);
+    }
+
+    @Override
+    public void service(String menu, String option) {
+        // TODO Auto-generated method stub
+        
     }
 }
 

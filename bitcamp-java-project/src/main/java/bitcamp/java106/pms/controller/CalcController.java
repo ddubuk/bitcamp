@@ -14,16 +14,26 @@ public class CalcController implements Controller {
     
     public void service(String menu, String option) {
         System.out.printf("식을 입력하세요?", option);
+        String[] arr = keyScan.nextLine().split(" ");
+        if (arr.length != 3) {
+            System.out.println("입력 형식 예) 3 + 2");
+            return;
+        }
+        
+        int a = Integer.parseInt(arr[0]);
+        int b = Integer.parseInt(arr[2]);
+        String op = arr[1];
+        int result = 0;
+        
+        switch (op) {
+        case "+": result = a + b; break;
+        case "-": result = a - b; break;
+        case "*": result = a * b; break;
+        case "/": result = a / b; break;
+        default:
+            System.out.printf("%s 연산자를 지원하지 않습니다.\n", op);
+            return;
+        }
+        System.out.printf("%d %s %d = %d\n", a, op, b, result);
     }
-
 }
-
-/*
-switch (op) {
-case "+": return a + b;
-case "-": return a - b;
-case "*": return a * b;
-case "/": return a / b;
-default:
-    throw new RuntimeException("해당 연산자를 지원하지 않습니다.");
-}*/

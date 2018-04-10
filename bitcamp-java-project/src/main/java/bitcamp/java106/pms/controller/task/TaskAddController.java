@@ -2,7 +2,6 @@
 package bitcamp.java106.pms.controller.task;
 
 import java.sql.Date;
-import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
@@ -13,10 +12,9 @@ import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
 import bitcamp.java106.pms.domain.Task;
 import bitcamp.java106.pms.domain.Team;
-import bitcamp.java106.pms.util.Console;
 
 @Component("task/add")
-public abstract class TaskAddController implements Controller {
+public class TaskAddController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
@@ -33,7 +31,18 @@ public abstract class TaskAddController implements Controller {
         this.memberDao = memberDao;
     }
     
-    public void service(String menu, String option, final Team team) {
+    public void service(String menu, String option) {
+        if (option == null) {
+            System.out.println("팀명을 입력하시기 바랍니다.");
+            return; 
+        }
+        
+        Team team = teamDao.get(option);
+        if (team == null) {
+            System.out.printf("'%s' 팀은 존재하지 않습니다.", option);
+            return;
+        }
+        
         Task task = new Task(team);
         
         System.out.println("[팀 작업 추가]");

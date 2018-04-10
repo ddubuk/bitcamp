@@ -13,7 +13,7 @@ import bitcamp.java106.pms.domain.Task;
 import bitcamp.java106.pms.domain.Team;
 
 @Component("task/view")
-public abstract class TaskViewController implements Controller {
+public class TaskViewController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
@@ -30,7 +30,17 @@ public abstract class TaskViewController implements Controller {
         this.memberDao = memberDao;
     }
     
-    public void service(String menu, String option, final Team team) {
+    public void service(String menu, String option) {
+        if (option == null) {
+            System.out.println("팀명을 입력하시기 바랍니다.");
+            return; 
+        }
+        
+        Team team = teamDao.get(option);
+        if (team == null) {
+            System.out.printf("'%s' 팀은 존재하지 않습니다.", option);
+            return;
+        }
         System.out.println("[작업 정보]");
         System.out.print("작업 번호? ");
         int taskNo = Integer.parseInt(keyScan.nextLine());

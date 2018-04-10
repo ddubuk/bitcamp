@@ -9,7 +9,6 @@ import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
 @Component("team/member/list")
@@ -17,14 +16,12 @@ public abstract class TeamMemberListController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
-    MemberDao memberDao;
     TeamMemberDao teamMemberDao;
     
     public TeamMemberListController(Scanner scanner, TeamDao teamDao, 
-            MemberDao memberDao, TeamMemberDao teamMemberDao) {
+            TeamMemberDao teamMemberDao) {
         this.keyScan = scanner;
         this.teamDao = teamDao;
-        this.memberDao = memberDao;
         this.teamMemberDao = teamMemberDao;
     }
     

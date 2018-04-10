@@ -1,7 +1,6 @@
 // Controller 규칙에 따라 메서드 작성
 package bitcamp.java106.pms.controller.teammember;
 
-import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
@@ -9,22 +8,19 @@ import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.MemberDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.dao.TeamMemberDao;
-import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Team;
 
 @Component("team/member/delete")
-public abstract class TeamMemberDeleteController implements Controller {
+public class TeamMemberDeleteController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
-    MemberDao memberDao;
     TeamMemberDao teamMemberDao;
     
     public TeamMemberDeleteController(Scanner scanner, TeamDao teamDao, 
-            MemberDao memberDao, TeamMemberDao teamMemberDao) {
+            TeamMemberDao teamMemberDao) {
         this.keyScan = scanner;
         this.teamDao = teamDao;
-        this.memberDao = memberDao;
         this.teamMemberDao = teamMemberDao;
     }
     
@@ -52,6 +48,12 @@ public abstract class TeamMemberDeleteController implements Controller {
         
         System.out.println("[팀 멤버 삭제]");
         System.out.println("삭제하였습니다.");
+    }
+
+    @Override
+    public void service(String menu, String option) {
+        // TODO Auto-generated method stub
+        
     }
 }
 

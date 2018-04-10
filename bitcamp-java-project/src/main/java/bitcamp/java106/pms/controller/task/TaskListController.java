@@ -16,7 +16,7 @@ import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.util.Console;
 
 @Component("task/list")
-public abstract class TaskListController implements Controller {
+public class TaskListController implements Controller {
     
     Scanner keyScan;
     TeamDao teamDao;
@@ -33,7 +33,18 @@ public abstract class TaskListController implements Controller {
         this.memberDao = memberDao;
     }
     
-    public void service(String menu, String option, final Team team) {
+    public void service(String menu, String option) {
+        if (option == null) {
+            System.out.println("팀명을 입력하시기 바랍니다.");
+            return; 
+        }
+        
+        Team team = teamDao.get(option);
+        if (team == null) {
+            System.out.printf("'%s' 팀은 존재하지 않습니다.", option);
+            return;
+        }
+        
         System.out.println("[팀 작업 목록]");
         
         Iterator<Task> iterator = taskDao.list(team.getName());
