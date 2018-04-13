@@ -1,4 +1,4 @@
-// 에노테이션 프로퍼티 - 타입
+// 애노테이션 프로퍼티 타입
 package step20.ex5;
 
 import java.lang.annotation.Retention;
@@ -10,3 +10,11 @@ public @interface MyAnnotation {
     int v2() default 100;
     float v3() default 3.14f;
 }
+
+
+
+
+
+
+
+

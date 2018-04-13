@@ -1,4 +1,4 @@
-// DataInputStream을 이용하여 객체 출력 - 인스턴스의 값을 출력
+// DataOutputStream을 이용하여 객체 출력 - 인스턴스의 값을 출력
 package step22.ex7;
 
 import java.io.FileOutputStream;
@@ -8,8 +8,8 @@ public class Exam01_1 {
     public static void main(String[] args) throws Exception {
         FileOutputStream fileOut = new FileOutputStream("temp/test7.data");
         
-        // 기본의 FileOutputStream 객체에 String, int, boolean 값을 출력하는
-        // 장신구/보조장치/플러그인을 장착한다.
+        // 기존의 FileOutputStream 객체에 String,int,boolean 값을 출력하는
+        // 장신구/보조장치/플러그인(decorator)을 장착한다.
         DataOutputStream out = new DataOutputStream(fileOut);
         
         Member member = new Member();
@@ -17,7 +17,7 @@ public class Exam01_1 {
         member.age = 27;
         member.gender = true;
         
-        // 장신구/보조장치/플러그인을 사용하여 String, int, boolean 값을 출력한다.
+        // 장신구/보조장치/플러그인(decorator)를 사용하여 String,int,boolean 값을 출력한다.
         out.writeUTF(member.name); 
         out.writeInt(member.age);
         out.writeBoolean(member.gender);

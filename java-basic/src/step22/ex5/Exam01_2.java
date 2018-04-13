@@ -20,7 +20,6 @@ public class Exam01_2 {
 
         System.out.println(endTime - startTime);
         System.out.println(callCount);
-        
         in.close();
     }
 

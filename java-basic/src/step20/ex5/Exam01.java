@@ -1,4 +1,4 @@
-// 애노테이션 - 프로퍼티 값 추출
+// 애노테이션 프로퍼티 값 추출
 package step20.ex5;
 
 public class Exam01 {
@@ -10,5 +10,10 @@ public class Exam01 {
         System.out.println(obj.v1());
         System.out.println(obj.v2());
         System.out.println(obj.v3());
+        
     }
 }
+
+
+
+

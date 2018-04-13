@@ -1,4 +1,4 @@
-// BurfferedInputStream
+// BufferedInputStream과 BufferedOutputStream을 사용하여 파일 복사 및 시간 측정
 package step22.ex7;
 
 import java.io.FileInputStream;
@@ -8,18 +8,18 @@ public class Exam02_2 {
 
     public static void main(String[] args) throws Exception {
         FileInputStream fileIn = new FileInputStream("temp/jls8.pdf");
-        BurfferedInputStream in = new BurfferedInputStream(fileIn);
+        BufferedInputStream in = new BufferedInputStream(fileIn);
         
         FileOutputStream fileOut = new FileOutputStream("temp/jls8_5.pdf");
-        BurfferedOutputStream out = new BurfferedOutputStream(fileOut);
+        BufferedOutputStream out = new BufferedOutputStream(fileOut);
 
         int b;
         
         long startTime = System.currentTimeMillis(); // 밀리초
         
-        while ((b = in.read()) != -1) { // 파일을 끝까지 읽는다.
+        while ((b = in.read()) != -1) 
             out.write(b);
-        }
+        
         long endTime = System.currentTimeMillis();
 
         System.out.println(endTime - startTime);

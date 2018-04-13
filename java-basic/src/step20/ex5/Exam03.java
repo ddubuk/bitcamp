@@ -10,5 +10,10 @@ public class Exam03 {
         System.out.println(obj.v1()[0]);
         System.out.println(obj.v2()[0]);
         System.out.println(obj.v3()[0]);
+        
     }
 }
+
+
+
+

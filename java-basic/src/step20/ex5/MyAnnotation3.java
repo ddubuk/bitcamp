@@ -1,4 +1,4 @@
-// 에노테이션 프로퍼티 - 배열
+// 애노테이션 프로퍼티 타입 - 배열
 package step20.ex5;
 
 import java.lang.annotation.Retention;
@@ -11,3 +11,11 @@ public @interface MyAnnotation3 {
     int[] v2() default 100;
     float[] v3() default 3.14f;
 }
+
+
+
+
+
+
+
+

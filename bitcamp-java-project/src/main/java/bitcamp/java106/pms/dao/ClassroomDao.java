@@ -1,13 +1,17 @@
 package bitcamp.java106.pms.dao;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
 import bitcamp.java106.pms.annotation.Component;
+import bitcamp.java106.pms.domain.Board;
 import bitcamp.java106.pms.domain.Classroom;
 
 @Component
@@ -38,17 +42,17 @@ public class ClassroomDao extends AbstractDao<Classroom> {
     }
     
     public void save() throws Exception {
-        PrintWriter out = new PrintWriter(new FileWriter("data/classroom.csv"));
-        
-        Iterator<Classroom> classrooms = this.list();
-        
-        while (classrooms.hasNext()) {
-            Classroom classroom = classrooms.next();
-            out.printf("%d,%s,%s,%s,%s\n", classroom.getNo(), classroom.getTitle(),
-                    classroom.getStartDate(), classroom.getEndDate(),
-                    classroom.getRoom().equals("") ? " " : classroom.getRoom());
+        try (
+                ObjectOutputStream out = new ObjectOutputStream(
+                                new BufferedOutputStream(
+                                new FileOutputStream("data/classroom.data")));
+            ) {
+            Iterator<Classroom> Classrooms = this.list();
+            
+            while (Classrooms.hasNext()) {
+                out.writeObject(Classrooms.next());
+            }
         }
-        out.close();
     }
     
     public int indexOf(Object key) {

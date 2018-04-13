@@ -1,4 +1,4 @@
-// 플러그인으로 전환한 BurfferedOutputStream 사용하기
+// 플러그인으로 전환한 BufferedInputStream 사용하기 - 읽기 시간 측정
 package step22.ex7;
 
 import java.io.FileInputStream;
@@ -7,8 +7,8 @@ public class Exam02_1 {
 
     public static void main(String[] args) throws Exception {
         FileInputStream fileIn = new FileInputStream("temp/jls8.pdf");
-        BurfferedInputStream in = new BurfferedInputStream(fileIn);
-        
+        BufferedInputStream in = new BufferedInputStream(fileIn);
+
         int b;
         
         long startTime = System.currentTimeMillis(); // 밀리초

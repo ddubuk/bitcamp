@@ -1,4 +1,4 @@
-// Java I/O API 사용하기 - Serialize의 대상 클래스가 변경되는 경우
+// Java I/O API 사용하기 - ObjectInputStream으로 Serialize 데이터를 읽기 
 package step22.ex9;
 
 import java.io.BufferedInputStream;
@@ -12,21 +12,25 @@ public class Exam02_3 {
         BufferedInputStream bufIn = new BufferedInputStream(fileIn);
         ObjectInputStream in = new ObjectInputStream(bufIn);
         
-        // 실행하기 전, 해야할 일:
-        // 1) test9_3.data 파일을 읽기 전에 
-        //    Member2 클래스에 전화번호를 저장할 수 있는 인스턴스 변수를 추가한다.
+        // Serialize로 출력된 데이터를 읽어 다시 원래의 객체로 만들기
         Member2 member = (Member2) in.readObject();
+        
         in.close();
         
         System.out.println(member);
-        
     }
 
 }
 
 // 용어 정리!
-// Serialize : 객체 ===> 바이트 배열   (marshalling 이라고도 부른다.)
-// Deserialize : 바이트 배열 ===> 객체 (unmarshalling 이라고도 부른다.)
+// Serialize   : 객체 ===> 바이트 배열   (marshalling 이라고도 부른다.)
+// Deserialize : 바이트 배열 ===> 객체   (unmarshalling 이라고도 부른다.)
+// 
+
+
+
+
+
 
 
 

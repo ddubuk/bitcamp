@@ -1,7 +1,10 @@
 package bitcamp.java106.pms.dao;
 
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -31,8 +34,8 @@ public class TaskDao extends AbstractDao<Task> {
                 task.setStartDate(Date.valueOf(arr[2]));
                 task.setEndDate(Date.valueOf(arr[3]));
                 task.setState(Integer.parseInt(arr[4]));
-                task.setTeam(new Team());
-                task.setWorker(new Member());
+                task.setTeam(new Team(arr[5]));
+                task.setWorker(new Member(arr[6]));
                 this.insert(task);
             } catch (Exception e) { // 데이터를 모두 읽었거나 파일 형식에 문제가 있다면,
                 //e.printStackTrace();
@@ -43,18 +46,17 @@ public class TaskDao extends AbstractDao<Task> {
     }
     
     public void save() throws Exception {
-        PrintWriter out = new PrintWriter(new FileWriter("data/task.csv"));
-        
-        Iterator<Task> tasks = this.list();
-        
-        while (tasks.hasNext()) {
-            Task task = tasks.next();
-            out.printf("%d,%s,%s,%s,%d,%s,%s\n", task.getNo(), task.getTitle(),
-                    task.getStartDate(), task.getEndDate(),
-                    task.getState(), task.getTeam().getName(), 
-                    task.getWorker().getId());
+        try (
+                ObjectOutputStream out = new ObjectOutputStream(
+                                new BufferedOutputStream(
+                                new FileOutputStream("data/task.data")));
+            ) {
+            Iterator<Task> tasks = this.list();
+            
+            while (tasks.hasNext()) {
+                out.writeObject(tasks.next());
+            }
         }
-        out.close();
     }
         
     // 기존의 list() 메서드로는 작업을 처리할 수 없기 때문에 
@@ -88,7 +90,6 @@ public class TaskDao extends AbstractDao<Task> {
 //ver 19 - 우리 만든 ArrayList 대신 java.util.LinkedList를 사용하여 목록을 다룬다. 
 //ver 18 - ArrayList 클래스를 적용하여 객체(의 주소) 목록을 관리한다.
 // ver 17 - 클래스 생성
-
 
 
 

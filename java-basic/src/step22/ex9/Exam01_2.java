@@ -1,4 +1,4 @@
-// Java I/O API 사용하기 - BufferdOutputStream
+// Java I/O API 사용하기 - BufferedOutputStream
 package step22.ex9;
 
 import java.io.BufferedOutputStream;
@@ -8,7 +8,7 @@ import java.io.FileOutputStream;
 public class Exam01_2 {
 
     public static void main(String[] args) throws Exception {
-        FileOutputStream fileOut = new FileOutputStream("temp/test9_2.txt");
+        FileOutputStream fileOut = new FileOutputStream("temp/test9_2.data");
         BufferedOutputStream bufOut = new BufferedOutputStream(fileOut);
         DataOutputStream out = new DataOutputStream(bufOut);
         
@@ -17,7 +17,7 @@ public class Exam01_2 {
         member.age = 27;
         member.gender = true;
         
-        // 장신구/보조장치/플러그인을 사용하여 String, int, boolean 값을 출력한다.
+        // 장신구/보조장치/플러그인(decorator)를 사용하여 String,int,boolean 값을 출력한다.
         long startTime = System.currentTimeMillis();
         
         for (int i = 0; i < 100000; i++) {
@@ -32,7 +32,6 @@ public class Exam01_2 {
         
         System.out.println("데이터 출력 완료!");
         System.out.println(endTime - startTime);
-
     }
 
 }
