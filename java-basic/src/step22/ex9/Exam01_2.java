@@ -1,13 +1,14 @@
-// DataInputStream을 이용하여 객체 출력 - 버퍼 사용 후
-package step22.ex8;
+// Java I/O API 사용하기 - BufferdOutputStream
+package step22.ex9;
 
 import java.io.BufferedOutputStream;
+import java.io.DataOutputStream;
 import java.io.FileOutputStream;
 
 public class Exam01_2 {
 
     public static void main(String[] args) throws Exception {
-        FileOutputStream fileOut = new FileOutputStream("temp/test8_2.txt");
+        FileOutputStream fileOut = new FileOutputStream("temp/test9_2.txt");
         BufferedOutputStream bufOut = new BufferedOutputStream(fileOut);
         DataOutputStream out = new DataOutputStream(bufOut);
         

@@ -20,8 +20,6 @@ public class DataInputStream extends InputStream {
         return in.read();
     }
 
-
-
     public String readUTF() throws Exception {
         // 상속 받은 read() 메서드를 사용하여 문자열 출력
         int size = in.read(); 

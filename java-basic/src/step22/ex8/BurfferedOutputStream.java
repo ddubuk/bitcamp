@@ -33,7 +33,7 @@ public class BurfferedOutputStream extends OutputStream {
     }
     
     public void flush() throws IOException {
-        if (cursor > 0 ) {
+        if (cursor > 0) {
             out.write(buf, 0, cursor);
             cursor = 0;
         }
