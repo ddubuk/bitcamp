@@ -1,0 +1,34 @@
+// 게시판 관리 - 삭제
+package step25.ex2;
+
+import java.sql.DriverManager;
+import java.util.Scanner;
+
+public class Exam01_delete {
+
+    public static void main(String[] args) throws Exception {
+        Scanner keyScan = new Scanner(System.in);
+        System.out.print("삭제할 게시물 번호? ");
+        String no = keyScan.nextLine();
+        
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        System.out.println("JDBC 드라이버 로딩 및 등록 완료!");
+        
+        // 2) DBMS에 연결하기
+        java.sql.Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false&user=java106&password=1111",
+                "java106", "1111");
+        
+        java.sql.Statement stmt = con.createStatement();
+        int count = stmt.executeUpdate(
+                "delete from ex_board where bno=" + no);
+        System.out.printf("%d 개 삭제 성공!", count);
+        
+        // 지원해제
+        // => 파일과 마찬가지로 DBMS에 연결한 후 더이상 사용하지 않으면 연결을 해지해야 한다.
+        stmt.close();
+        con.close();
+        keyScan.close();
+    }
+
+}
