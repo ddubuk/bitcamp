@@ -66,7 +66,7 @@ create table ex_task (
     titl varchar(255) not null,
     rdt datetime not null,
     rdt datetime not null,
-    wrkr int not null,
+    wrkr int not null
 );
 
 create table ex_task (
@@ -74,7 +74,7 @@ create table ex_task (
     titl varchar(255) not null,
     rdt datetime not null,
     rdt datetime not null,
-    wrkr int not null,
+    wrkr int not null
 );
 
 create table ex_classroom (
@@ -82,15 +82,16 @@ create table ex_classroom (
     titl varchar(255) not null,
     rdt datetime not null,
     rdt datetime not null,
-    rm varchar(255) not null,
+    rm varchar(255) not null
 );
 
 create table ex_team (
-    bno int not null,
-    titl varchar(255) not null,
+    name varchar(255) not null,
+    cont text,
+    mx int not null,
     rdt datetime not null,
-    rdt datetime not null,
-    wrkr int not null,
+    rdt datetime not null
+    
 );
 
 
