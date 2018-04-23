@@ -19,7 +19,7 @@ import java.sql.DriverManager;
 //    - 이클립스 프로젝트의 classpath에 자동으로 등록한다.
 // 4) 이클립스 프로젝트를 refresh하라!
 // 
-public class Exam01 {
+public class Exam01_5 {
 
     public static void main(String[] args) throws Exception {
         // 1) JDBC 드라이버 로딩
