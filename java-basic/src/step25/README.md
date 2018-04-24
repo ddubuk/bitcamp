@@ -10,7 +10,7 @@ create table ex_board (
 
 ## 테이블의 주키(primary ket;PK) 컬럼을 설정
 alter table ex_board
-    add constraint ex_board_pk primary key (bno);
+    add constraint ex_member_pk primary key (id);
     
 ## PP 컬럼 'bno'의 값을 자동으로 증가하도록 설정
 주의! primary key 컬럼인 경우에만 자동 증가를 설정할 수 있다. 일반 컬럼은 안된다.
@@ -55,10 +55,9 @@ create table ex_board (
 );
 
 create table ex_member (
-    bno int not null,
     id varchar(255) not null,
     email text,
-    rdt password not null
+    pwd varchar(255) not null
 );
 
 create table ex_task (
@@ -93,6 +92,8 @@ create table ex_team (
     rdt datetime not null
     
 );
+
+
 
 
 ```
