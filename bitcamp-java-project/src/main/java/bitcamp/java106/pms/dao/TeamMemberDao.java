@@ -64,16 +64,24 @@ public class TeamMemberDao {
         }
     }
     
-    public boolean isExist(String teamName, String memberId) {
-        String teamNameLC = teamName.toLowerCase();
-        String memberIdLC = memberId.toLowerCase();
-        
-        // 팀 이름으로 멤버 아이디가 들어 있는 ArrayList를 가져온다.
-        ArrayList<String> members = collection.get(teamNameLC);
-        if (members == null || !members.contains(memberIdLC)) 
-            return false;
-        
-        return true;
+    public boolean isExist(String teamName, String memberId) throws Exception {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        try (
+            Connection con = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
+                "java106", "1111");
+            PreparedStatement stmt = con.prepareStatement(
+                "select mid from pms_team_member where tnm=? and mid=?");) {  // 팀이름을 주면 멤버아이디를 알아냄
+            
+            stmt.setString(1, teamName);
+            stmt.setString(2, memberId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return true;
+                }
+                return false;
+            }
+        }
     }
 }
 
