@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="BoardMapper">
+
+  <!-- 일반 개게에서 값을 꺼내려면 프로퍼티명을 지정해야 한다.
+       예) #{title} ==> getTitle()의 리턴 값을 의미한다. -->
+  <insert id="insertBoard">
+    insert into ex_board(titl,cont,rdt)
+    values(#{title},#{content},now())
+  </insert>
+</mapper>

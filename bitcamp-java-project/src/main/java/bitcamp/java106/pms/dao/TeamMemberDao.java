@@ -10,16 +10,20 @@ import java.util.List;
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.domain.Member;
 import bitcamp.java106.pms.domain.Task;
+import bitcamp.java106.pms.jdbc.DataSource;
 
 @Component
 public class TeamMemberDao {
     
+    DataSource dataSource;
+    
+    public TeamMemberDao(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+    
     public int insert(String teamName, String memberId) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "insert into pms_team_member(tnm,mid) values(?,?)");) {
             
@@ -30,11 +34,8 @@ public class TeamMemberDao {
     }
     
     public int deleteMember(String teamName, String memberId) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "delete from pms_team_member where tnm=? and mid=?");) {
             
@@ -45,11 +46,8 @@ public class TeamMemberDao {
     }
     
     public List<String> selectList(String teamName) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "select mid from pms_team_member where tnm=?");) {  // 팀이름을 주면 멤버아이디를 알아냄
             
@@ -65,11 +63,8 @@ public class TeamMemberDao {
     }
     
     public boolean isExist(String teamName, String memberId) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "select mid from pms_team_member where tnm=? and mid=?");) {  // 팀이름을 주면 멤버아이디를 알아냄
             

@@ -16,16 +16,21 @@ public class DefaultDataSource implements DataSource {
     
     ArrayList<Connection> conPool = new ArrayList<>();
     
-    // 생성자를 호출할 때 DB 관련 정보를 주지 않는다면
-    // JVM 프로퍼티에서 찾는다.
-    public DefaultDataSource() throws Exception {
+    // 생성자를 호출할 때 지정된 경로의 프로퍼티 파일을 읽어 로딩한다.
+    // JDBC 관련 프로퍼티 값을 읽는다.
+    public DefaultDataSource(String propFilePath) throws Exception {
         Properties props = new Properties();
-        props.load(new FileInputStream("jdbc.properties"));
+        props.load(new FileInputStream(propFilePath));
         this.driver = props.getProperty("jdbc.driver");
         this.jdbcUrl = props.getProperty("jdbc.url");
         this.user = props.getProperty("jdbc.username");
         this.password = props.getProperty("jdbc.password");
+        
+        // JDBC 드라이버 로딩 및 DriverManager에 등록
+        Class.forName(driver); 
+        // Driver 클래스가 로딩될 때 스스로 객체를 자동 생성하여 DriverManager에 등록한다. 
     }
+    
     
     public DefaultDataSource(String driver, String jdbcUrl, 
             String user, String password) throws Exception {

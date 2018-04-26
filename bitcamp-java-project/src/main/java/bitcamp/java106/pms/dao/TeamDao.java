@@ -11,15 +11,20 @@ import java.util.Locale;
 
 import bitcamp.java106.pms.annotation.Component;
 import bitcamp.java106.pms.domain.Team;
+import bitcamp.java106.pms.jdbc.DataSource;
 
 @Component
 public class TeamDao {
+    
+    DataSource dataSource;
+    
+    public TeamDao(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+    
     public int delete(String name) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "delete from pms_team where name=?");) {
             
@@ -29,11 +34,8 @@ public class TeamDao {
     }
     
     public List<Team> selectList() throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "select name, sdt, edt, max_qty from pms_team");
             ResultSet rs = stmt.executeQuery();) {
@@ -52,11 +54,8 @@ public class TeamDao {
     }
 
     public int insert(Team team) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "insert into pms_team(name,dscrt,max_qty,sdt,edt) values(?,?,?,?,?)");) {
             
@@ -70,11 +69,8 @@ public class TeamDao {
     }
 
     public int update(Team team) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "update pms_team set dscrt=?, max_qty=?, sdt=?, edt=? where name=?");) {
             
@@ -88,11 +84,8 @@ public class TeamDao {
     }
 
     public Team selectOne(String name) throws Exception {
-        Class.forName("com.mysql.cj.jdbc.Driver");
         try (
-            Connection con = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/java106db?serverTimezone=UTC&useSSL=false",
-                "java106", "1111");
+            Connection con = dataSource.getConnection();
             PreparedStatement stmt = con.prepareStatement(
                 "select dscrt, sdt, edt, max_qty from pms_team where name=?");) {
             
