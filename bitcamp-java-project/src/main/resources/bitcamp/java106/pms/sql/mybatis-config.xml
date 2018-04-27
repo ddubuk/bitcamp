@@ -3,11 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="step25/ex6/jdbc.properties"></properties>
+  <properties resource="bitcamp/java106/pms/sql/jdbc.properties"></properties>
   
   <!-- 긴 이름의 클래서명을 사용하는 대신에 짧은 이름의 별명을 사용해보자! -->
   <typeAliases>
-   <typeAlias type="step25.ex6.Board" alias="Board"/>
+   <typeAlias type="bitcamp.java106.pms.domain.Board" alias="Board"/>
   </typeAliases>
   
   <environments default="development">
@@ -23,6 +23,6 @@
   </environments>
   
   <mappers>
-      <mapper resource="step25/ex6/BoardMapper07.xml"/>
+      <mapper resource="bitcamp/java106/pms/sql/BoardMapper.xml"/>
   </mappers>
 </configuration>
