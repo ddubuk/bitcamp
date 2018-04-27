@@ -1,4 +1,4 @@
-// mybatis - SQL에 파라미터로 일반 객체 전달하기
+// mybatis - INSERT 실행 후 자동 증가된 PK값 가져오기
 package step25.ex6;
 
 import java.io.InputStream;
@@ -10,18 +10,16 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class Exam02_3 {
+public class Exam02_4 {
 
     public static void main(String[] args) throws Exception {
         InputStream inputStream = Resources.getResourceAsStream(
-                "step25/ex6/mybatis-config06.xml");
+                "step25/ex6/mybatis-config07.xml");
         
         SqlSessionFactory factory = 
                 new SqlSessionFactoryBuilder().build(inputStream);
         SqlSession sqlSession = factory.openSession();
         
-        // Board 객체에 값을 저장하여 전달하기
-        // => 단 값을 꺼낼 수 있도록 겟터(프로퍼티)가 있어야 한다.
         Board board = new Board();
         board.setTitle("제목입니다.");
         board.setContent("내용입니다.");
@@ -29,29 +27,18 @@ public class Exam02_3 {
         System.out.printf("번호: %d\n", board.getNo());
         System.out.printf("제목: %s\n", board.getTitle());
         System.out.printf("내용: %s\n", board.getContent());
-        System.out.println("-------------------------------------");
+        System.out.println("-----------------------------------------");
         
         int count = sqlSession.insert("BoardMapper.insertBoard", board);
-        
         System.out.println(count);
         
+        // mybatis는 insert를 실행한 후에 자동 증가된 PK 값(bno 컬럼의 값)을
+        // board 객체에 담아줄 것이다.
         System.out.printf("번호: %d\n", board.getNo());
         System.out.printf("제목: %s\n", board.getTitle());
         System.out.printf("내용: %s\n", board.getContent());
         
-        // mybatis에서는 autocommit이 기본으로 false이다.
-        // autocommit?
-        // => insert/update/delete와 같이 데이터를 변경하는 작업은
-        //    위험하기 때문에 DBMS의 임시 메모리에 그 작업 결과를 보관한다.
-        // => 클라이언트에서 최종적으로 변경을 허락해야만 진짜 테이블에 값을 반영한다.
-        //
-        // mybatis에서는 다음 메서드를 호출하여 DBMS에게 작업 결과를
-        // 진짜 테이블에 반영하라고 명령해야 한다.
         sqlSession.commit();
-        // commit 명령을 내리지 않으면 insert/update/delete을 테이블에 반영하지 않는다.
-        
-        // commit : 임시 메모리에 저장된 작업 결과를 실제 테이블에 반영시키는 명령이다.
-        // rollback : 임시 메모리에 저장된 작업 결과를 취소하는 명령이다.
         
         sqlSession.close();
     }

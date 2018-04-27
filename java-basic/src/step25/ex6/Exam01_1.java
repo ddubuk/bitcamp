@@ -24,7 +24,6 @@ public class Exam01_1 {
                 sqlSession.selectList("BoardMapper.selectBoard");
         
         for (Board board : list) {
-            System.out.println(board);
             System.out.printf("%d, %s, %s, %s\n",
                     board.getNo(),
                     board.getTitle(),
