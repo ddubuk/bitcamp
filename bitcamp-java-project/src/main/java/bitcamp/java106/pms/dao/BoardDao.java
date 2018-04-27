@@ -50,15 +50,11 @@ public class BoardDao {
     }
 
     public int update(Board board) throws Exception {
-        try (
-            Connection con = dataSource.getConnection();
-            PreparedStatement stmt = con.prepareStatement(
-                "update pms_board set titl=?, cont=?, cdt=now() where bno=?");) {
-            
-            stmt.setString(1, board.getTitle());
-            stmt.setString(2, board.getContent());
-            stmt.setInt(3, board.getNo());
-            return stmt.executeUpdate();
+        try (SqlSession sqlSession = this.sqlSessionFactory.openSession()) {
+            int count = sqlSession.update(
+                    "bitcamp.java106.pms.dao.BoardDao.update", board);
+            sqlSession.commit();
+            return count;
         }
     }
 

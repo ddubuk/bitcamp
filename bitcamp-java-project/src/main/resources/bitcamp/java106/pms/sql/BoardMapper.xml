@@ -42,4 +42,12 @@
      from pms_board
       where bno=#{value}
     </select>
+    
+    <update id="update" parameterType="Board">
+      update pms_board set
+          titl=#{title},
+          cont=#{content},
+          cdt=now()
+      where bno=#{no}
+    </update>
 </mapper>
