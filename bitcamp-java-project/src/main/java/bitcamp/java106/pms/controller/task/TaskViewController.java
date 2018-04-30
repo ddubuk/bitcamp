@@ -8,7 +8,6 @@ import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Task;
-import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
 
@@ -26,12 +25,12 @@ public class TaskViewController implements Controller {
     @Override
     public void service(ServerRequest request, ServerResponse response) {
         PrintWriter out = response.getWriter();
-        String teamName = request.getParameter("teamName");
+        
         try {
             int no = Integer.parseInt(request.getParameter("no"));
             Task task = taskDao.selectOne(no);
             if (task == null) {
-                out.printf("'%s'팀의 %d번 작업을 찾을 수 없습니다.\n", no);
+                out.printf("해당 작업을 찾을 수 없습니다.\n");
                 return;
             }
             out.printf("팀명: %s\n", task.getTeam().getName());

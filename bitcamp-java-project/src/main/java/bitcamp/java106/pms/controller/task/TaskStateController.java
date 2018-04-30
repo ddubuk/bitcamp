@@ -8,7 +8,6 @@ import bitcamp.java106.pms.controller.Controller;
 import bitcamp.java106.pms.dao.TaskDao;
 import bitcamp.java106.pms.dao.TeamDao;
 import bitcamp.java106.pms.domain.Task;
-import bitcamp.java106.pms.domain.Team;
 import bitcamp.java106.pms.server.ServerRequest;
 import bitcamp.java106.pms.server.ServerResponse;
 
@@ -30,18 +29,19 @@ public class TaskStateController implements Controller {
         try {
             int no = Integer.parseInt(request.getParameter("no"));
             int state = Integer.parseInt(request.getParameter("state"));
-            if (!(state == Task.READY ||
-                    state == Task.WORKING || 
-                    state == Task.COMPLETE)) {
+            if (!(state == Task.READY || 
+                 state == Task.WORKING || 
+                 state == Task.COMPLETE)) {
                 out.println("올바르지 않은 값입니다. 이전 상태를 유지합니다!");
                 return;
             }
+            
             int count = taskDao.updateState(no, state);
             if (count == 0) {
                 out.println("해당 작업이 없습니다.");
             } else {
-                out.printf("작업 상태를 '%s'로 변경하였습니다.\n",
-                getStateLabel(state));
+                out.printf("작업 상태를 '%s'로 변경하였습니다.\n", 
+                        getStateLabel(state));
             }
         } catch (Exception e) {
             out.println("상태 변경 실패!");
