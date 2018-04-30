@@ -45,11 +45,6 @@ ALTER TABLE stnt
             mno -- 수강생번호
         );
 
--- 수강생 유니크 인덱스
-CREATE UNIQUE INDEX UIX_stnt
-    ON stnt ( -- 수강생
-    );
-
 -- 수강생 유니크 인덱스2
 CREATE UNIQUE INDEX UIX_stnt
     ON stnt ( -- 수강생
@@ -72,11 +67,6 @@ ALTER TABLE tcher
         PRIMARY KEY (
             mno -- 강사번호
         );
-
--- 강사 유니크 인덱스
-CREATE UNIQUE INDEX UIX_tcher
-    ON tcher ( -- 강사
-    );
 
 -- 강사 유니크 인덱스2
 CREATE UNIQUE INDEX UIX_tcher
