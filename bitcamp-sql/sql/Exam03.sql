@@ -97,7 +97,7 @@ from test1
 where working != 'Y';
 
 /* 학생 번호가 짝수인 경우 전화 번호를 '1111'로 변경하라*/
-update test1 set 
+update test1 set
     tel = '1111'
 where (no % 2) = 0;
 

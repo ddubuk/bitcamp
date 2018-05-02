@@ -23,7 +23,7 @@ public class AppConfig {
     // 단, 스프링 IoC 컨테이너에게 이 메서드를 호출하여
     // 이 메서드가 리턴한 객체를 컨테이너에 보관하도록 명령을 내려야 하는데,
     // 메서드 선언 앞에 @Bean 애노테이션을 붙이면 된다.
-    @Bean // 스프링 IoC 컨테이너에게 이 메서드를 호출하라는 명령이다.
+    @Bean // 스프링 IoC 컨테이너에게 이 메서드를 호출하라는 명령이다. // @Bean은 자바 객체
           // 스프링 IoC 컨테이너는 이 메서드를 호출한 후 그 리턴 값을 컨테이너에 보관한다.
     public SqlSessionFactory getSqlSessionFactory() throws Exception {  // 이메소드는 스프링 IoC 컨테이너가 호출한다.
         InputStream inputStream = Resources.getResourceAsStream(        // @Bean을 붙이면 된다.
