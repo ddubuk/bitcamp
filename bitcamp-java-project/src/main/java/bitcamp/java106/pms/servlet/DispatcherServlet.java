@@ -104,7 +104,14 @@ public class DispatcherServlet implements Servlet {
 //       gradle에서 관리하는 라이브러리이다.
 //    => 이 라이브러리를 배포하여면 gradle을 통해 라이브러리를 복사해야 한다.
 //       > gradle build 실행!
-//       그러면 
+//       그러면 build/
+//
+// .war 파일 만들기
+// => build.gradle 파일에 war 파일을 다루는 플러그인을 장착한다.
+// => "gradle build"를 실행하여 war파일을 
+// .war 파일 배치
+// => war 파일을 배치할 때는 그냥 $톰캣홈/webapps/ 폴더에 복사하면 된다.
+// => 그러면 톰캣 서버를 실행할 때 압축 파일이 자동으로 풀려서 배치될 것이다.
 //
 // 애플리케이션 실행
 // 1) 톰캣 서버를 실행 또는 재실행
