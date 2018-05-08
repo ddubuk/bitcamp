@@ -10,7 +10,6 @@ public class Tire {
     public String toString() {
         return "Tire [maker=" + maker + ", width=" + width + ", ratio=" + ratio + ", wheel=" + wheel + "]";
     }
-    
     public String getMaker() {
         return maker;
     }
