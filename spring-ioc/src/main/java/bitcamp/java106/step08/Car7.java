@@ -2,22 +2,23 @@ package bitcamp.java106.step08;
 
 import java.sql.Date;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 
-// 의존 객체 Engine 주입 - 셋터 메서드에 @Autowired로 표시하라!
-public class Car2 {
+import org.springframework.stereotype.Component;
+
+// 의존 객체 Engine 주입 - 인스턴스 변수에 @Autowired를 붙여도 된다.
+@Component
+public class Car7 {
     String model;
     String maker;
     int cc;
     boolean auto;
     Date createdDate;
+    
+    // 이 애노테이션은 자바에서 제공한다.
+    @Resource(name="e1")
     Engine engine;
-    
-    public Car2() {
-        System.out.println("Car2()");
-    }
-    
-    
+
     @Override
     public String toString() {
         return "Car [model=" + model + ", maker=" + maker + ", cc=" + cc + ", auto=" + auto + ", createdDate="
@@ -27,7 +28,6 @@ public class Car2 {
         return engine;
     }
     
-    @Autowired
     public void setEngine(Engine engine) {
         System.out.println("Car.setEngine()");
         this.engine = engine;

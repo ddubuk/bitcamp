@@ -3,21 +3,23 @@ package bitcamp.java106.step08;
 import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
-// 의존 객체 Engine 주입 - 셋터 메서드에 @Autowired로 표시하라!
-public class Car2 {
+// 의존 객체 Engine 주입 - 인스턴스 변수에 @Autowired를 붙여도 된다.
+public class Car6 {
     String model;
     String maker;
     int cc;
     boolean auto;
     Date createdDate;
+    
+    // @@Autowired의 required 값은 기본이 true이다.
+    // => 즉, 의존객체 주입이 필수 시험이다.
+    // => 선택 사항으로 바꾸고 싶으면 false로 설정하라!
+    @Autowired(required=false)
+    @Qualifier(value="e2")
     Engine engine;
-    
-    public Car2() {
-        System.out.println("Car2()");
-    }
-    
-    
+
     @Override
     public String toString() {
         return "Car [model=" + model + ", maker=" + maker + ", cc=" + cc + ", auto=" + auto + ", createdDate="
@@ -27,7 +29,6 @@ public class Car2 {
         return engine;
     }
     
-    @Autowired
     public void setEngine(Engine engine) {
         System.out.println("Car.setEngine()");
         this.engine = engine;

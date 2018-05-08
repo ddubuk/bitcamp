@@ -4,17 +4,18 @@ import java.sql.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-// 의존 객체 Engine 주입 - 셋터 메서드에 @Autowired로 표시하라!
-public class Car2 {
+// 의존 객체 Engine 주입 - 인스턴스 변수에 @Autowired를 붙여도 된다.
+public class Car3 {
     String model;
     String maker;
     int cc;
     boolean auto;
     Date createdDate;
-    Engine engine;
     
-    public Car2() {
-        System.out.println("Car2()");
+    @Autowired Engine engine;
+    
+    public Car3() {
+        System.out.println("Car3()");
     }
     
     
@@ -27,7 +28,6 @@ public class Car2 {
         return engine;
     }
     
-    @Autowired
     public void setEngine(Engine engine) {
         System.out.println("Car.setEngine()");
         this.engine = engine;
